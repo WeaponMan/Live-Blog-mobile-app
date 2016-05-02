@@ -461,6 +461,13 @@ window.app = {
           new FastClick(document.body);
 
 
+          if (!window.device) {
+                 window.device = { platform: 'Browser' };
+             }
+
+
+
+
 
 
           app.snapper = new Snap({

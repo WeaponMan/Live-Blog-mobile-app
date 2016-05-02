@@ -8,8 +8,6 @@
     <string>${PRODUCT_NAME}</string>
     <key>CFBundleExecutable</key>
     <string>${EXECUTABLE_NAME}</string>
-    <key>CFBundleIconFile</key>
-    <string>icon.png</string>
     <key>CFBundleIcons</key>
     <dict/>
     <key>CFBundleIcons~ipad</key>
@@ -30,12 +28,10 @@
     <string>1.0.0</string>
     <key>LSRequiresIPhoneOS</key>
     <true/>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string></string>
     <key>NSMainNibFile</key>
-    <string></string>
+    <string/>
     <key>NSMainNibFile~ipad</key>
-    <string></string>
+    <string/>
     <key>UISupportedInterfaceOrientations</key>
     <array>
       <string>UIInterfaceOrientationPortrait</string>
@@ -44,13 +40,20 @@
     <key>UISupportedInterfaceOrientations~ipad</key>
     <array>
       <string>UIInterfaceOrientationPortrait</string>
-      <string>UIInterfaceOrientationLandscapeLeft</string>
-      <string>UIInterfaceOrientationLandscapeRight</string>
       <string>UIInterfaceOrientationPortraitUpsideDown</string>
     </array>
+    <key>UIRequiresFullScreen</key>
+    <true/>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+      <key>NSAllowsArbitraryLoads</key>
+      <true/>
+    </dict>
     <key>UIInterfaceOrientation</key>
     <array>
       <string>UIInterfaceOrientationPortrait</string>
     </array>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string/>
   </dict>
 </plist>
