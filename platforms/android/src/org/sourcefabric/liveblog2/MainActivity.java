@@ -17,7 +17,7 @@
        under the License.
  */
 
-package org.sourcefabric.liveblog;
+package org.sourcefabric.liveblog2;
 
 import android.os.Bundle;
 import org.apache.cordova.*;
