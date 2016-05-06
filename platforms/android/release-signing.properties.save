@@ -1,0 +1,5 @@
+storeFile=../../keystore
+storeType=jks
+keyAlias=liveblog
+keyPassword=
+storePassword=
