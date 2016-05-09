@@ -1,5 +1,4 @@
-cordova.define("org.apache.cordova.file.File", function(require, exports, module) {
-/*
+cordova.define("org.apache.cordova.file.File", function(require, exports, module) {/*
  *
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -29,12 +28,10 @@ cordova.define("org.apache.cordova.file.File", function(require, exports, module
  * size {Number} size of the file in bytes
  */
 
-var File = function(name, localURL, type, lastModifiedDate, size){
+var File = function(name, fullPath, type, lastModifiedDate, size){
     this.name = name || '';
-    this.localURL = localURL || null;
+    this.fullPath = fullPath || null;
     this.type = type || null;
-    this.lastModified = lastModifiedDate || null;
-    // For backwards compatibility, store the timestamp in lastModifiedDate as well
     this.lastModifiedDate = lastModifiedDate || null;
     this.size = size || 0;
 
@@ -70,7 +67,7 @@ File.prototype.slice = function(start, end) {
         }
     }
 
-    var newFile = new File(this.name, this.localURL, this.type, this.lastModified, this.size);
+    var newFile = new File(this.name, this.fullPath, this.type, this.lastModifiedData, this.size);
     newFile.start = this.start + newStart;
     newFile.end = this.start + newEnd;
     return newFile;
@@ -78,5 +75,4 @@ File.prototype.slice = function(start, end) {
 
 
 module.exports = File;
-
 });

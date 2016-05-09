@@ -1,5 +1,4 @@
-cordova.define("org.apache.cordova.file.FileEntry", function(require, exports, module) {
-/*
+cordova.define("org.apache.cordova.file.FileEntry", function(require, exports, module) {/*
  *
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -36,8 +35,8 @@ var utils = require('cordova/utils'),
  * {DOMString} fullPath the absolute full path to the file (readonly)
  * {FileSystem} filesystem on which the file resides (readonly)
  */
-var FileEntry = function(name, fullPath, fileSystem, nativeURL) {
-     FileEntry.__super__.constructor.apply(this, [true, false, name, fullPath, fileSystem, nativeURL]);
+var FileEntry = function(name, fullPath, fileSystem) {
+     FileEntry.__super__.constructor.apply(this, [true, false, name, fullPath, fileSystem]);
 };
 
 utils.extend(FileEntry, Entry);
@@ -52,7 +51,7 @@ FileEntry.prototype.createWriter = function(successCallback, errorCallback) {
     this.file(function(filePointer) {
         var writer = new FileWriter(filePointer);
 
-        if (writer.localURL === null || writer.localURL === "") {
+        if (writer.fileName === null || writer.fileName === "") {
             errorCallback && errorCallback(new FileError(FileError.INVALID_STATE_ERR));
         } else {
             successCallback && successCallback(writer);
@@ -67,18 +66,16 @@ FileEntry.prototype.createWriter = function(successCallback, errorCallback) {
  * @param {Function} errorCallback is called with a FileError
  */
 FileEntry.prototype.file = function(successCallback, errorCallback) {
-    var localURL = this.toInternalURL();
     var win = successCallback && function(f) {
-        var file = new File(f.name, localURL, f.type, f.lastModifiedDate, f.size);
+        var file = new File(f.name, f.fullPath, f.type, f.lastModifiedDate, f.size);
         successCallback(file);
     };
     var fail = errorCallback && function(code) {
         errorCallback(new FileError(code));
     };
-    exec(win, fail, "File", "getFileMetadata", [localURL]);
+    exec(win, fail, "File", "getFileMetadata", [this.fullPath]);
 };
 
 
 module.exports = FileEntry;
-
 });

@@ -1,5 +1,4 @@
-cordova.define("org.apache.cordova.file.ProgressEvent", function(require, exports, module) {
-/*
+cordova.define("org.apache.cordova.file.ProgressEvent", function(require, exports, module) {/*
  *
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -66,5 +65,4 @@ var ProgressEvent = (function() {
 })();
 
 module.exports = ProgressEvent;
-
 });
