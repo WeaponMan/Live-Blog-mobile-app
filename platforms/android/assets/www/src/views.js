@@ -674,9 +674,10 @@ $(function () {
 
             try {
                 $.ajax({
-                    url: 'http://' + app.session.get("host") + '/resources/my/LiveDesk/Blog/' + app.session.get("blog") + '/Post',
+                    url: 'http://' + app.session.get("host") + '/resources/my/LiveDesk/Blog/' + app.session.get("blog") + '/Post?'+ Math.random(),
                     type: 'POST',
                     data: req,
+                    cache: false,
                     dataType: "json",
                     beforeSend: function (xhr) {
                         // set header
@@ -684,13 +685,14 @@ $(function () {
                     },
                     success: function (data) {
                         if (that.autoPublish) {
-                            var url = data.href + '/Publish';
+                            var url = data.href + '/Publish?'+ Math.random();
                             url = url.replace(/(http:\/\/|https:\/\/|\/\/)/g, 'http://');
                             try {
                                 $.ajax({
                                     url: url,
                                     type: 'POST',
                                     data: req,
+                                    cache: false,
                                     dataType: "json",
                                     beforeSend: function (xhr) {
                                         // set header
@@ -804,7 +806,7 @@ $(function () {
 
             options.params = params;
 
-            var uploadURL = 'http://' + app.session.get("host") + '/resources/my/HR/User/' + app.session.get("userId") + '/MetaData/Upload.json?X-Filter=*&Authorization=' + app.session.get("session");
+            var uploadURL = 'http://' + app.session.get("host") + '/resources/my/HR/User/' + app.session.get("userId") + '/MetaData/Upload?X-Filter=*&Authorization=' + app.session.get("session");
 
             var ft = new FileTransfer();
             var that = this;

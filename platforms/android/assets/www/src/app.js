@@ -84,7 +84,7 @@ $(function () {
 
                 try {
                     $.ajax({
-                        url: 'http://' + user.host + '/resources/Security/Authentication.json',
+                        url: 'http://' + user.host + '/resources/Security/Authentication?'+ Math.random(),
                         type: 'POST',
                         data: {
                             userName: user.login
@@ -134,7 +134,7 @@ $(function () {
             this.authorizeCallback = callback;
             try {
                 $.ajax({
-                    url: 'http://' + user.host + '/resources/Security/Authentication/Login.json',
+                    url: 'http://' + user.host + '/resources/Security/Authentication/Login?'+ Math.random(),
                     type: 'POST',
                     data: {
                         Token: token,
@@ -170,8 +170,9 @@ $(function () {
 
             try {
                 $.ajax({
-                    url: 'http://' + app.session.get("host") + '/resources/RBAC/Role.json?X-Filter=Name,Id',
+                    url: 'http://' + app.session.get("host") + '/resources/RBAC/Role?X-Filter=Name,Id&'+ Math.random(),
                     type: 'GET',
+                    cache : false,
                     crossDomain: true,
                     dataType: 'json',
                     success: function (data) {
@@ -182,8 +183,9 @@ $(function () {
                         });
                         try {
                             $.ajax({
-                                url: 'http://' + app.session.get("host") + '/resources/HR/User/' + app.session.get("userId") + '/Role.json?X-filter=Id',
+                                url: 'http://' + app.session.get("host") + '/resources/HR/User/' + app.session.get("userId") + '/Role?X-filter=Id&'+ Math.random(),
                                 type: 'GET',
+                                cache : false,
                                 crossDomain: true,
                                 dataType: 'json',
                                 success: function (data) {

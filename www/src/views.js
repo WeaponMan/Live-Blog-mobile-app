@@ -677,6 +677,7 @@ $(function () {
                     url: 'http://' + app.session.get("host") + '/resources/my/LiveDesk/Blog/' + app.session.get("blog") + '/Post',
                     type: 'POST',
                     data: req,
+                    cache: false,
                     dataType: "json",
                     beforeSend: function (xhr) {
                         // set header
@@ -691,6 +692,7 @@ $(function () {
                                     url: url,
                                     type: 'POST',
                                     data: req,
+                                    cache: false,
                                     dataType: "json",
                                     beforeSend: function (xhr) {
                                         // set header
@@ -804,7 +806,7 @@ $(function () {
 
             options.params = params;
 
-            var uploadURL = 'http://' + app.session.get("host") + '/resources/my/HR/User/' + app.session.get("userId") + '/MetaData/Upload.json?X-Filter=*&Authorization=' + app.session.get("session");
+            var uploadURL = 'http://' + app.session.get("host") + '/resources/my/HR/User/' + app.session.get("userId") + '/MetaData/Upload?X-Filter=*&Authorization=' + app.session.get("session");
 
             var ft = new FileTransfer();
             var that = this;
