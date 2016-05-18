@@ -577,7 +577,7 @@ $(function () {
         selectHandler: function (e) {
             var content = unescape($(e.target).find('option:selected').data('content'));
             console.log(content);
-            if (content !== undefined) {
+            if (content != "undefined") {
                 this.$el.find("#postMessage").val(content);
             }
         },
