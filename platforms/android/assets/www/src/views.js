@@ -352,8 +352,8 @@ $(function () {
             var throttledCheckScroll = _.throttle(this.checkScroll, 150);
             $("#entriesListView .scrollable").unbind("scroll").bind("scroll", throttledCheckScroll);
 
-            _.bindAll(this, 'newButtonClickHandler');
-            $("#entriesListView #loadNewPosts").unbind("click").bind("click", this.newButtonClickHandler);
+            //_.bindAll(this, 'newButtonClickHandler');
+            //$("#entriesListView #loadNewPosts").unbind("click").bind("click", this.newButtonClickHandler);
         },
         handleExternalUrls: function () {
             // Handle click events for all external URLs
@@ -577,7 +577,7 @@ $(function () {
         selectHandler: function (e) {
             var content = unescape($(e.target).find('option:selected').data('content'));
             console.log(content);
-            if (content !== undefined) {
+            if (content != "undefined") {
                 this.$el.find("#postMessage").val(content);
             }
         },
@@ -674,7 +674,7 @@ $(function () {
 
             try {
                 $.ajax({
-                    url: 'http://' + app.session.get("host") + '/resources/my/LiveDesk/Blog/' + app.session.get("blog") + '/Post?'+ Math.random(),
+                    url: 'http://' + app.session.get("host") + '/resources/my/LiveDesk/Blog/' + app.session.get("blog") + '/Post',
                     type: 'POST',
                     data: req,
                     cache: false,
@@ -685,7 +685,7 @@ $(function () {
                     },
                     success: function (data) {
                         if (that.autoPublish) {
-                            var url = data.href + '/Publish?'+ Math.random();
+                            var url = data.href + '/Publish';
                             url = url.replace(/(http:\/\/|https:\/\/|\/\/)/g, 'http://');
                             try {
                                 $.ajax({

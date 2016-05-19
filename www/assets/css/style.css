@@ -861,7 +861,7 @@ button.loading {
 #autoPublishToggle {
     display: inline-block;
 }
-
+/*
 @media only screen and (orientation: landscape) {
     #entriesListContent {
         transition: right 0.5s ease-in;
@@ -881,3 +881,4 @@ button.loading {
         width: 193px;
     }
 }
+*/

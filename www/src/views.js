@@ -352,8 +352,8 @@ $(function () {
             var throttledCheckScroll = _.throttle(this.checkScroll, 150);
             $("#entriesListView .scrollable").unbind("scroll").bind("scroll", throttledCheckScroll);
 
-            _.bindAll(this, 'newButtonClickHandler');
-            $("#entriesListView #loadNewPosts").unbind("click").bind("click", this.newButtonClickHandler);
+            //_.bindAll(this, 'newButtonClickHandler');
+            //$("#entriesListView #loadNewPosts").unbind("click").bind("click", this.newButtonClickHandler);
         },
         handleExternalUrls: function () {
             // Handle click events for all external URLs
