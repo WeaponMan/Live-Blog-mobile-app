@@ -70,7 +70,6 @@ $(function () {
         route: "login",
         inProgress: false,
         login: function (callback) {
-            console.log("window.auth");
             auth.inProgress = true;
             //route reset
             auth.route = "login";
@@ -85,7 +84,7 @@ $(function () {
 
                 try {
                     $.ajax({
-                        url: 'http://' + user.host + '/resources/Security/Authentication',
+                        url: 'http://' + user.host + '/resources/Security/Authentication?'+ Math.random(),
                         type: 'POST',
                         data: {
                             userName: user.login
@@ -135,7 +134,7 @@ $(function () {
             this.authorizeCallback = callback;
             try {
                 $.ajax({
-                    url: 'http://' + user.host + '/resources/Security/Authentication/Login',
+                    url: 'http://' + user.host + '/resources/Security/Authentication/Login?'+ Math.random(),
                     type: 'POST',
                     data: {
                         Token: token,
@@ -171,9 +170,9 @@ $(function () {
 
             try {
                 $.ajax({
-                    url: 'http://' + app.session.get("host") + '/resources/RBAC/Role?X-Filter=Name,Id',
+                    url: 'http://' + app.session.get("host") + '/resources/RBAC/Role?X-Filter=Name,Id&'+ Math.random(),
                     type: 'GET',
-                    cache: false,
+                    cache : false,
                     crossDomain: true,
                     dataType: 'json',
                     success: function (data) {
@@ -184,9 +183,9 @@ $(function () {
                         });
                         try {
                             $.ajax({
-                                url: 'http://' + app.session.get("host") + '/resources/HR/User/' + app.session.get("userId") + '/Role?X-filter=Id',
+                                url: 'http://' + app.session.get("host") + '/resources/HR/User/' + app.session.get("userId") + '/Role?X-filter=Id&'+ Math.random(),
                                 type: 'GET',
-                                cache: false,
+                                cache : false,
                                 crossDomain: true,
                                 dataType: 'json',
                                 success: function (data) {
@@ -272,12 +271,13 @@ $(function () {
         },
         onlineEventHandler: function () {
             app.hasConnection = true;
-            console.log("onlineEventHandler");
+
             clearTimeout(app.loginDelayedFunction);
             app.loginDelayedFunction = _.delay(function () {
                 if (!auth.inProgress) {
                     auth.login(function () {
                         console.log("onlineeventhandler auth callback fired");
+
                     });
                 }
             }, 2000);

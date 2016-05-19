@@ -70,7 +70,6 @@ $(function () {
         route: "login",
         inProgress: false,
         login: function (callback) {
-            console.log("window.auth");
             auth.inProgress = true;
             //route reset
             auth.route = "login";
@@ -173,7 +172,7 @@ $(function () {
                 $.ajax({
                     url: 'http://' + app.session.get("host") + '/resources/RBAC/Role?X-Filter=Name,Id',
                     type: 'GET',
-                    cache: false,
+                    cache : false,
                     crossDomain: true,
                     dataType: 'json',
                     success: function (data) {
@@ -186,7 +185,7 @@ $(function () {
                             $.ajax({
                                 url: 'http://' + app.session.get("host") + '/resources/HR/User/' + app.session.get("userId") + '/Role?X-filter=Id',
                                 type: 'GET',
-                                cache: false,
+                                cache : false,
                                 crossDomain: true,
                                 dataType: 'json',
                                 success: function (data) {
@@ -272,12 +271,13 @@ $(function () {
         },
         onlineEventHandler: function () {
             app.hasConnection = true;
-            console.log("onlineEventHandler");
+
             clearTimeout(app.loginDelayedFunction);
             app.loginDelayedFunction = _.delay(function () {
                 if (!auth.inProgress) {
                     auth.login(function () {
                         console.log("onlineeventhandler auth callback fired");
+
                     });
                 }
             }, 2000);
